@@ -5,25 +5,51 @@ GPIO.setmode(GPIO.BCM)
 '''Dette specificerer RPi pins til at følge "Broadcom SOC channel"... Aka., det definere pins i en bestemt rækkefølge'''
 
 
-FrontWheel1 = 1
-FrontWheelDir1 = 2
-FrontWheel2 = 3
-FrontWheelDir2 = 4
+RWheel1 = 33
+RWheelDir1 = 7
+RWheel2 = 35
+RWheelDir2 = 11
 
-BackWheel1 = 5
-BackWheelDir1 = 6
-BackWheel2 = 7
-BackWheelDir2 = 8
+LWheel1 = 32
+#LWheelDir1 = x
+LWheel2 = 12
+#LWheelDir2 = x
 '''Dette er midlertidige pins. Vi skal have sat dem til det de rigtigt skal være...'''
 
 
-GPIO.output(FrontWheelDir1, True)
-GPIO.output(FrontWheelDir2, True)
-GPIO.output(BackWheelDir1, True)
-GPIO.output(BackWheelDir2, True)
+def RWheel1_Dir(i):
+    GPIO.output(RWheelDir1, i)
+def RWheel2_Dir(i):
+    GPIO.output(RWheelDir2, i)
+'''
+def LWheel1_Dir(i):
+    GPIO.output(LWheelDir1, i)
+def LWheel2_Dir(i):
+    GPIO.output(LWheelDir2, i)
+'''
 '''Dette siger hvilken retning som hjulene skal dreje...'''
 
 
+def RWheel1_Speed(i):
+    GPIO.output(RWheel1, i)
+def RWheel2_Speed(i):
+    GPIO.output(RWheel2, i)
+def LWheel1_Speed(i):
+    GPIO.output(LWheel1, i)
+def LWheel2_Speed(i):
+    GPIO.output(LWheel2, i)
+'''Dette siger hvilken hastighed hjulene skal have...'''
+
+
+RWheel1_Dir(True)
+RWheel1_Speed(100)
+
+RWheel2_Dir(True)
+RWheel1_Speed(100)
+
+
+
+'''
 pi_pwm_Front1 = GPIO.PWM(FrontWheel1, 1000)
 pi_pwm_Front1.start(0)
 pi_pwm_Front2 = GPIO.PWM(FrontWheel2, 1000)
@@ -33,4 +59,5 @@ pi_pwm_Back1 = GPIO.PWM(BackWheel1, 1000)
 pi_pwm_Back1.start(0)
 pi_pwm_Back2 = GPIO.PWM(BackWheel2, 1000)
 pi_pwm_Back2.start(0)
+'''
 '''Dette instiller hastighed på hjulene'''
