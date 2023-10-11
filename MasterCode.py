@@ -10,10 +10,10 @@ RWheelDir1 = 4
 RWheel2 = 19
 RWheelDir2 = 17
 
-LWheel1 = 12
-#LWheelDir1 = x
-LWheel2 = 18
-#LWheelDir2 = x
+LWheel1 = 18
+LWheelDir1 = 27
+LWheel2 = 12
+LWheelDir2 = 22
 '''Dette er midlertidige pins. Vi skal have sat dem til det de rigtigt skal være...'''
 
 GPIO.setup(RWheel1, GPIO.OUT)
@@ -22,9 +22,9 @@ GPIO.setup(RWheel2, GPIO.OUT)
 GPIO.setup(RWheelDir2, GPIO.OUT)
 
 GPIO.setup(LWheel1, GPIO.OUT)
-#GPIO.setup(LWheelDir1, GPIO.OUT)
+GPIO.setup(LWheelDir1, GPIO.OUT)
 GPIO.setup(LWheel2, GPIO.OUT)
-#GPIO.setup(LWheelDir2, GPIO.OUT)
+GPIO.setup(LWheelDir2, GPIO.OUT)
 
 
 
@@ -32,12 +32,10 @@ def RWheel1_Dir(i):
     GPIO.output(RWheelDir1, i)
 def RWheel2_Dir(i):
     GPIO.output(RWheelDir2, i)
-'''
 def LWheel1_Dir(i):
     GPIO.output(LWheelDir1, i)
 def LWheel2_Dir(i):
     GPIO.output(LWheelDir2, i)
-'''
 '''Dette siger hvilken retning som hjulene skal dreje...'''
 
 
@@ -58,6 +56,11 @@ RWheel1_Speed(100)
 RWheel2_Dir(True)
 RWheel1_Speed(100)
 
+LWheel1_Dir(True)
+LWheel1_Speed(100)
+
+LWheel2_Dir(True)
+LWheel2_Speed(100)
 
 
 '''
