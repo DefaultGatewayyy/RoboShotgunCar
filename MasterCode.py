@@ -49,29 +49,18 @@ def LWheel2_Speed(i):
     GPIO.output(LWheel2, i)
 '''Dette siger hvilken hastighed hjulene skal have...'''
 
+i = 0
+
 
 RWheel1_Dir(True)
-RWheel1_Speed(100)
-
 RWheel2_Dir(True)
-RWheel2_Speed(100)
 
 LWheel1_Dir(True)
-LWheel1_Speed(100)
-
 LWheel2_Dir(True)
-LWheel2_Speed(100)
 
-
-'''
-pi_pwm_Front1 = GPIO.PWM(FrontWheel1, 1000)
-pi_pwm_Front1.start(0)
-pi_pwm_Front2 = GPIO.PWM(FrontWheel2, 1000)
-pi_pwm_Front2.start(0)
-
-pi_pwm_Back1 = GPIO.PWM(BackWheel1, 1000)
-pi_pwm_Back1.start(0)
-pi_pwm_Back2 = GPIO.PWM(BackWheel2, 1000)
-pi_pwm_Back2.start(0)
-'''
-'''Dette instiller hastighed på hjulene'''
+while i < 101:
+    RWheel1_Speed(i)
+    RWheel2_Speed(i)
+    LWheel1_Speed(i)
+    LWheel2_Speed(i)
+    i += 1
