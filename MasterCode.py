@@ -16,6 +16,17 @@ LWheel2 = 12
 #LWheelDir2 = x
 '''Dette er midlertidige pins. Vi skal have sat dem til det de rigtigt skal være...'''
 
+GPIO.setup(RWheel1, GPIO.OUT)
+GPIO.setup(RWheelDir1, GPIO.OUT)
+GPIO.setup(RWheel2, GPIO.OUT)
+GPIO.setup(RWheelDir2, GPIO.OUT)
+
+GPIO.setup(LWheel1, GPIO.OUT)
+#GPIO.setup(LWheelDir1, GPIO.OUT)
+GPIO.setup(LWheel2, GPIO.OUT)
+#GPIO.setup(LWheelDir2, GPIO.OUT)
+
+
 
 def RWheel1_Dir(i):
     GPIO.output(RWheelDir1, i)
