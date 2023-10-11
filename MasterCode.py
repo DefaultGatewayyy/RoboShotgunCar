@@ -5,14 +5,14 @@ GPIO.setmode(GPIO.BCM)
 '''Dette specificerer RPi pins til at følge "Broadcom SOC channel"... Aka., det definere pins i en bestemt rækkefølge'''
 
 
-RWheel1 = 33
-RWheelDir1 = 7
-RWheel2 = 35
-RWheelDir2 = 11
+RWheel1 = 13
+RWheelDir1 = 4
+RWheel2 = 19
+RWheelDir2 = 17
 
-LWheel1 = 32
+LWheel1 = 12
 #LWheelDir1 = x
-LWheel2 = 12
+LWheel2 = 18
 #LWheelDir2 = x
 '''Dette er midlertidige pins. Vi skal have sat dem til det de rigtigt skal være...'''
 
