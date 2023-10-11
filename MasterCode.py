@@ -11,7 +11,7 @@ RWheel2 = 19
 RWheelDir2 = 17
 
 LWheel1 = 18
-LWheelDir1 = 27
+LWheelDir1 = 23
 LWheel2 = 12
 LWheelDir2 = 22
 '''Dette er midlertidige pins. Vi skal have sat dem til det de rigtigt skal være...'''
@@ -54,7 +54,7 @@ RWheel1_Dir(True)
 RWheel1_Speed(100)
 
 RWheel2_Dir(True)
-RWheel1_Speed(100)
+RWheel2_Speed(100)
 
 LWheel1_Dir(True)
 LWheel1_Speed(100)
