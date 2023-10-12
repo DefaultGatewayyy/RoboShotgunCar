@@ -72,11 +72,11 @@ while True:
         PWM_RWheel2.ChangeDutyCycle(duty)
         PWM_LWheel1.ChangeDutyCycle(duty)
         PWM_LWheel2.ChangeDutyCycle(duty)
-        sleep(1)
+        sleep(0.1)
                 
     for duty in range(100,0,-1):
         PWM_RWheel1.ChangeDutyCycle(duty)
         PWM_RWheel2.ChangeDutyCycle(duty)
         PWM_LWheel1.ChangeDutyCycle(duty)
         PWM_LWheel2.ChangeDutyCycle(duty)
-        sleep(1)
+        sleep(0.1)
