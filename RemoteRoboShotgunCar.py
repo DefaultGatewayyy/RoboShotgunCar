@@ -89,10 +89,10 @@ def TurnRight():
 
 def GoForward():
     Wheel_Dir(False)
-    PWM_RWheel1.ChangeDutyCycle(60)
-    PWM_RWheel2.ChangeDutyCycle(60)
-    PWM_LWheel1.ChangeDutyCycle(60)
-    PWM_LWheel2.ChangeDutyCycle(60)
+    PWM_RWheel1.ChangeDutyCycle(120)
+    PWM_RWheel2.ChangeDutyCycle(120)
+    PWM_LWheel1.ChangeDutyCycle(120)
+    PWM_LWheel2.ChangeDutyCycle(120)
 
 def GoBackward():
     Wheel_Dir(True)
@@ -107,6 +107,12 @@ def Stop():
     PWM_LWheel1.ChangeDutyCycle(0)
     PWM_LWheel2.ChangeDutyCycle(0)
 
+def TurnAndRunLeft():
+    PWM_RWheel1.ChangeDutyCycle(110)
+    PWM_RWheel2.ChangeDutyCycle(110)
+    PWM_LWheel1.ChangeDutyCycle(90)
+    PWM_LWheel2.ChangeDutyCycle(90)
+
 def press(key):
     if key == "w":
         GoForward()
@@ -116,9 +122,11 @@ def press(key):
         TurnLeft()
     if key == "d":
         TurnRight()
+    if key == "w" and key == "a":
+        TurnAndRunLeft()
 
 def release(key):
-    if key == "w" or key == "s" or key == "a" or key == "d":
+    if key == "w" or key == "s" or key == "a" or key == "d" or key == "w" and key == "a":
         Stop()
 
 while True:
