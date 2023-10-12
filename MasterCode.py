@@ -87,19 +87,19 @@ PWM_RWheel1.ChangeDutyCycle(100)
 
 while True:
     if GPIO.input(SensorR) == 1 and GPIO.input(SensorL) == 1:
-        PWM_RWheel1.ChangeDutyCycle(20)
-        PWM_RWheel2.ChangeDutyCycle(20)
-        PWM_LWheel1.ChangeDutyCycle(20)
-        PWM_LWheel2.ChangeDutyCycle(20)
+        PWM_RWheel1.ChangeDutyCycle(100)
+        PWM_RWheel2.ChangeDutyCycle(100)
+        PWM_LWheel1.ChangeDutyCycle(100)
+        PWM_LWheel2.ChangeDutyCycle(100)
     
     elif GPIO.input(SensorR) == 1 and GPIO.input(SensorL) == 0:
         PWM_RWheel1.ChangeDutyCycle(0)
         PWM_RWheel2.ChangeDutyCycle(0)
-        PWM_LWheel1.ChangeDutyCycle(10)
-        PWM_LWheel2.ChangeDutyCycle(10)
+        PWM_LWheel1.ChangeDutyCycle(50)
+        PWM_LWheel2.ChangeDutyCycle(50)
 
     elif GPIO.input(SensorR) == 0 and GPIO.input(SensorL) == 1:
-        PWM_RWheel1.ChangeDutyCycle(10)
-        PWM_RWheel2.ChangeDutyCycle(10)
+        PWM_RWheel1.ChangeDutyCycle(50)
+        PWM_RWheel2.ChangeDutyCycle(50)
         PWM_LWheel1.ChangeDutyCycle(0)
         PWM_LWheel2.ChangeDutyCycle(0)
