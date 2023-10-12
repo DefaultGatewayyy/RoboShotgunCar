@@ -9,20 +9,27 @@ GPIO.setmode(GPIO.BCM)
 
 GPIO.cleanup()
 
+'''
+left front = RWheel1
+left back = RWheel2
+right back = LWheel1
+right fron = LWheel2
 
-RWheel1 = 13
+'''
+
+LWheel1 = 13
 RWheelDir1 = 4
-RWheel2 = 19
+LWheel2 = 19
 RWheelDir2 = 17
 
-LWheel1 = 18
+RWheel2 = 18
 LWheelDir1 = 23
-LWheel2 = 12
+RWheel1 = 12
 LWheelDir2 = 22
 '''Dette er midlertidige pins. Vi skal have sat dem til det de rigtigt skal være...'''
 
-Sensor1 = 24
-Sensor2 = 25
+SensorR = 24
+SensorL = 25
 '''Sensor pins'''
 
 
@@ -37,8 +44,8 @@ GPIO.setup(LWheel2, GPIO.OUT)
 GPIO.setup(LWheelDir2, GPIO.OUT)
 '''Motor pins bliver sat til output, da de skal have data vi giver dem'''
 
-GPIO.setup(Sensor1, GPIO.IN)
-GPIO.setup(Sensor2, GPIO.IN)
+GPIO.setup(SensorR, GPIO.IN)
+GPIO.setup(SensorL, GPIO.IN)
 '''Sensor pins bliver sat til input, da vi skal bruge data de giver os'''
 
 
@@ -74,30 +81,25 @@ RWheel2_Dir(False)
 LWheel1_Dir(False)
 LWheel2_Dir(False)
 
+PWM_RWheel1.ChangeDutyCycle(100)
+
+
 
 while True:
-    for duty in range(0, 101):
-        PWM_RWheel1.ChangeDutyCycle(duty) #provide duty cycle in the range 0-100
-        PWM_RWheel2.ChangeDutyCycle(duty)
-        PWM_LWheel1.ChangeDutyCycle(duty)
-        PWM_LWheel2.ChangeDutyCycle(duty)
-                
-    for duty in range(100, -1, -1):
-        PWM_RWheel1.ChangeDutyCycle(duty)
-        PWM_RWheel2.ChangeDutyCycle(duty)
-        PWM_LWheel1.ChangeDutyCycle(duty)
-        PWM_LWheel2.ChangeDutyCycle(duty)
-
-
-'''
-if GPIO.input(Sensor1) == 0 and GPIO.input(Sensor2) == 0:
+    if GPIO.input(SensorR) == 1 and GPIO.input(SensorL) == 1:
         PWM_RWheel1.ChangeDutyCycle(20)
         PWM_RWheel2.ChangeDutyCycle(20)
         PWM_LWheel1.ChangeDutyCycle(20)
         PWM_LWheel2.ChangeDutyCycle(20)
-    elif GPIO.input(Sensor1) == 1 and GPIO.input(Sensor2) == 0:
-        PWM_RWheel1.ChangeDutyCycle(20)
-        PWM_RWheel2.ChangeDutyCycle(20)
+    
+    elif GPIO.input(SensorR) == 1 and GPIO.input(SensorL) == 0:
+        PWM_RWheel1.ChangeDutyCycle(0)
+        PWM_RWheel2.ChangeDutyCycle(0)
+        PWM_LWheel1.ChangeDutyCycle(10)
+        PWM_LWheel2.ChangeDutyCycle(10)
+
+    elif GPIO.input(SensorR) == 0 and GPIO.input(SensorL) == 1:
+        PWM_RWheel1.ChangeDutyCycle(10)
+        PWM_RWheel2.ChangeDutyCycle(10)
         PWM_LWheel1.ChangeDutyCycle(0)
         PWM_LWheel2.ChangeDutyCycle(0)
-'''
