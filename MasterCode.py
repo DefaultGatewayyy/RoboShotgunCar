@@ -56,15 +56,8 @@ LWheel2_Dir(True)
 
 while True:
     for duty in range(0,101,1):
-        PWM_RWheel1.ChangeDutyCycle(duty) #provide duty cycle in the range 0-100
-        PWM_RWheel2.ChangeDutyCycle(duty)
-        PWM_LWheel1.ChangeDutyCycle(duty)
-        PWM_LWheel2.ChangeDutyCycle(duty)
-        sleep(0.1)
-                
-    for duty in range(100,0,-1):
-        PWM_RWheel1.ChangeDutyCycle(duty) #provide duty cycle in the range 0-100
-        PWM_RWheel2.ChangeDutyCycle(duty)
-        PWM_LWheel1.ChangeDutyCycle(duty)
-        PWM_LWheel2.ChangeDutyCycle(duty)
-        sleep(0.1)
+        GPIO.output(PWM_RWheel1, duty)
+        GPIO.output(PWM_RWheel2, duty)
+        GPIO.output(PWM_LWheel1, duty)
+        GPIO.output(PWM_LWheel2, duty)
+        sleep(1)
