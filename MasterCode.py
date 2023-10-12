@@ -7,7 +7,6 @@ from time import sleep
 GPIO.setmode(GPIO.BCM)
 '''Dette specificerer RPi pins til at følge "Broadcom SOC channel"... Aka., det definere pins i en bestemt rækkefølge'''
 
-GPIO.cleanup()
 
 '''
 left front = RWheel1
@@ -81,31 +80,32 @@ RWheel2_Dir(False)
 LWheel1_Dir(False)
 LWheel2_Dir(False)
 
-PWM_RWheel1.ChangeDutyCycle(100)
+
+GPIO.cleanup()
 
 
 
 while True:
     if GPIO.input(SensorR) == 1 and GPIO.input(SensorL) == 1:
-        PWM_RWheel1.ChangeDutyCycle(30)
-        PWM_RWheel2.ChangeDutyCycle(30)
-        PWM_LWheel1.ChangeDutyCycle(30)
-        PWM_LWheel2.ChangeDutyCycle(30)
+        PWM_RWheel1.ChangeDutyCycle(25)
+        PWM_RWheel2.ChangeDutyCycle(25)
+        PWM_LWheel1.ChangeDutyCycle(25)
+        PWM_LWheel2.ChangeDutyCycle(25)
     
     elif GPIO.input(SensorR) == 1 and GPIO.input(SensorL) == 0:
-        PWM_RWheel1.ChangeDutyCycle(30)
-        PWM_RWheel2.ChangeDutyCycle(30)
+        PWM_RWheel1.ChangeDutyCycle(25)
+        PWM_RWheel2.ChangeDutyCycle(25)
         PWM_LWheel1.ChangeDutyCycle(0)
         PWM_LWheel2.ChangeDutyCycle(0)
 
     elif GPIO.input(SensorR) == 0 and GPIO.input(SensorL) == 1:
         PWM_RWheel1.ChangeDutyCycle(0)
         PWM_RWheel2.ChangeDutyCycle(0)
-        PWM_LWheel1.ChangeDutyCycle(30)
-        PWM_LWheel2.ChangeDutyCycle(30)
+        PWM_LWheel1.ChangeDutyCycle(25)
+        PWM_LWheel2.ChangeDutyCycle(25)
 
     elif GPIO.input(SensorR) == 0 and GPIO.input(SensorL) == 0:
-        PWM_RWheel1.ChangeDutyCycle(30)
-        PWM_RWheel2.ChangeDutyCycle(30)
-        PWM_LWheel1.ChangeDutyCycle(30)
-        PWM_LWheel2.ChangeDutyCycle(30)
+        PWM_RWheel1.ChangeDutyCycle(25)
+        PWM_RWheel2.ChangeDutyCycle(25)
+        PWM_LWheel1.ChangeDutyCycle(25)
+        PWM_LWheel2.ChangeDutyCycle(25)
