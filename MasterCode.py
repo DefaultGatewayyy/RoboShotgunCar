@@ -91,21 +91,23 @@ while True:
         PWM_LWheel2.ChangeDutyCycle(25)
     
     elif GPIO.input(SensorR) == 1 and GPIO.input(SensorL) == 0:
-        PWM_RWheel1.ChangeDutyCycle(25)
-        PWM_RWheel2.ChangeDutyCycle(25)
-        PWM_LWheel1.ChangeDutyCycle(0)
-        PWM_LWheel2.ChangeDutyCycle(0)
+        for time in range(0, 10):
+            PWM_RWheel1.ChangeDutyCycle(25)
+            PWM_RWheel2.ChangeDutyCycle(25)
+            PWM_LWheel1.ChangeDutyCycle(0)
+            PWM_LWheel2.ChangeDutyCycle(0)
+            time += 1
 
     elif GPIO.input(SensorR) == 0 and GPIO.input(SensorL) == 1:
-        PWM_RWheel1.ChangeDutyCycle(0)
-        PWM_RWheel2.ChangeDutyCycle(0)
-        PWM_LWheel1.ChangeDutyCycle(25)
-        PWM_LWheel2.ChangeDutyCycle(25)
+        for time in range(0, 10):
+            PWM_RWheel1.ChangeDutyCycle(0)
+            PWM_RWheel2.ChangeDutyCycle(0)
+            PWM_LWheel1.ChangeDutyCycle(25)
+            PWM_LWheel2.ChangeDutyCycle(25)
+            time += 1
 
     elif GPIO.input(SensorR) == 0 and GPIO.input(SensorL) == 0:
         PWM_RWheel1.ChangeDutyCycle(25)
         PWM_RWheel2.ChangeDutyCycle(25)
         PWM_LWheel1.ChangeDutyCycle(25)
         PWM_LWheel2.ChangeDutyCycle(25)
-
-#comment!
