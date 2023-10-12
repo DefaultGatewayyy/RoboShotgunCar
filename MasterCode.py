@@ -58,7 +58,7 @@ RWheel2_Dir(True)
 LWheel1_Dir(True)
 LWheel2_Dir(True)
 
-while i < 101:
+while i < 200:
     RWheel1_Speed(i)
     RWheel2_Speed(i)
     LWheel1_Speed(i)
