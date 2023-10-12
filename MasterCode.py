@@ -81,8 +81,6 @@ LWheel1_Dir(False)
 LWheel2_Dir(False)
 
 
-GPIO.cleanup()
-
 
 
 while True:
