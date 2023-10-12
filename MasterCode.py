@@ -35,10 +35,14 @@ GPIO.setup(LWheelDir2, GPIO.OUT)
 
 
 PWM_RWheel1 = GPIO.PWM(RWheel1, 1000)
+PWM_RWheel1.start(0)
 PWM_RWheel2 = GPIO.PWM(RWheel2, 1000)
+PWM_RWheel2.start(0)
 
 PWM_LWheel1 = GPIO.PWM(LWheel1, 1000)
+PWM_LWheel1.start(0)
 PWM_LWheel2 = GPIO.PWM(LWheel2, 1000)
+PWM_LWheel2.start(0)
 '''Her sætter vi alle "Wheels" op til at køre med pwm'''
 
 
@@ -62,13 +66,17 @@ LWheel1_Dir(True)
 LWheel2_Dir(True)
 
 
-
-i = 0
-
-while i < 100:
-        GPIO.output(PWM_RWheel1, i)
-        GPIO.output(PWM_RWheel2, i)
-        GPIO.output(PWM_LWheel1, i)
-        GPIO.output(PWM_LWheel2, i)
-        i += 1
+while True:
+    for duty in range(0,101,1):
+        PWM_RWheel1.ChangeDutyCycle(duty) #provide duty cycle in the range 0-100
+        PWM_RWheel2.ChangeDutyCycle(duty)
+        PWM_LWheel1.ChangeDutyCycle(duty)
+        PWM_LWheel2.ChangeDutyCycle(duty)
+        sleep(1)
+                
+    for duty in range(100,0,-1):
+        PWM_RWheel1.ChangeDutyCycle(duty)
+        PWM_RWheel2.ChangeDutyCycle(duty)
+        PWM_LWheel1.ChangeDutyCycle(duty)
+        PWM_LWheel2.ChangeDutyCycle(duty)
         sleep(1)
