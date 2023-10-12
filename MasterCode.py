@@ -84,6 +84,9 @@ LWheel2_Dir(False)
 
 
 while True:
+    print(GPIO.input(SensorR))
+    print(GPIO.input(SensorL))
+    
     if GPIO.input(SensorR) == 1 and GPIO.input(SensorL) == 1:
         PWM_RWheel1.ChangeDutyCycle(35)
         PWM_RWheel2.ChangeDutyCycle(35)
@@ -91,20 +94,16 @@ while True:
         PWM_LWheel2.ChangeDutyCycle(35)
     
     elif GPIO.input(SensorR) == 1 and GPIO.input(SensorL) == 0:
-        for time in range(0, 20):
-            PWM_RWheel1.ChangeDutyCycle(35)
-            PWM_RWheel2.ChangeDutyCycle(35)
-            PWM_LWheel1.ChangeDutyCycle(0)
-            PWM_LWheel2.ChangeDutyCycle(0)
-            time += 1
+        PWM_RWheel1.ChangeDutyCycle(35)
+        PWM_RWheel2.ChangeDutyCycle(35)
+        PWM_LWheel1.ChangeDutyCycle(0)
+        PWM_LWheel2.ChangeDutyCycle(0)
 
     elif GPIO.input(SensorR) == 0 and GPIO.input(SensorL) == 1:
-        for time in range(0, 20):
-            PWM_RWheel1.ChangeDutyCycle(0)
-            PWM_RWheel2.ChangeDutyCycle(0)
-            PWM_LWheel1.ChangeDutyCycle(35)
-            PWM_LWheel2.ChangeDutyCycle(35)
-            time += 1
+        PWM_RWheel1.ChangeDutyCycle(0)
+        PWM_RWheel2.ChangeDutyCycle(0)
+        PWM_LWheel1.ChangeDutyCycle(35)
+        PWM_LWheel2.ChangeDutyCycle(35)
 
     elif GPIO.input(SensorR) == 0 and GPIO.input(SensorL) == 0:
         PWM_RWheel1.ChangeDutyCycle(35)
