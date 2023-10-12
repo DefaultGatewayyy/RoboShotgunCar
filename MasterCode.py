@@ -1,5 +1,6 @@
 '''python code'''
 import RPi.GPIO as GPIO
+from time import sleep
 
 GPIO.setmode(GPIO.BCM)
 '''Dette specificerer RPi pins til at følge "Broadcom SOC channel"... Aka., det definere pins i en bestemt rækkefølge'''
@@ -28,6 +29,14 @@ GPIO.setup(LWheelDir2, GPIO.OUT)
 
 
 
+PWM_RWheel1 = GPIO.PWM(RWheel1, 1000)
+PWM_RWheel2 = GPIO.PWM(RWheel2, 1000)
+
+PWM_LWheel1 = GPIO.PWM(LWheel1, 1000)
+PWM_LWheel2 = GPIO.PWM(LWheel2, 1000)
+'''Her sætter vi alle "Wheels" op til at køre med pwm'''
+
+
 def RWheel1_Dir(i):
     GPIO.output(RWheelDir1, i)
 def RWheel2_Dir(i):
@@ -39,28 +48,23 @@ def LWheel2_Dir(i):
 '''Dette siger hvilken retning som hjulene skal dreje...'''
 
 
-def RWheel1_Speed(i):
-    GPIO.output(RWheel1, i)
-def RWheel2_Speed(i):
-    GPIO.output(RWheel2, i)
-def LWheel1_Speed(i):
-    GPIO.output(LWheel1, i)
-def LWheel2_Speed(i):
-    GPIO.output(LWheel2, i)
-'''Dette siger hvilken hastighed hjulene skal have...'''
-
-i = 0
-
-
 RWheel1_Dir(True)
 RWheel2_Dir(True)
 
 LWheel1_Dir(True)
 LWheel2_Dir(True)
 
-while i < 200:
-    RWheel1_Speed(i)
-    RWheel2_Speed(i)
-    LWheel1_Speed(i)
-    LWheel2_Speed(i)
-    i += 1
+while True:
+    for duty in range(0,101,1):
+        PWM_RWheel1.ChangeDutyCycle(duty) #provide duty cycle in the range 0-100
+        PWM_RWheel2.ChangeDutyCycle(duty)
+        PWM_LWheel1.ChangeDutyCycle(duty)
+        PWM_LWheel2.ChangeDutyCycle(duty)
+        sleep(0.1)
+                
+    for duty in range(100,0,-1):
+        PWM_RWheel1.ChangeDutyCycle(duty) #provide duty cycle in the range 0-100
+        PWM_RWheel2.ChangeDutyCycle(duty)
+        PWM_LWheel1.ChangeDutyCycle(duty)
+        PWM_LWheel2.ChangeDutyCycle(duty)
+        sleep(0.1)
