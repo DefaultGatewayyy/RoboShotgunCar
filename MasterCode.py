@@ -103,3 +103,9 @@ while True:
         PWM_RWheel2.ChangeDutyCycle(30)
         PWM_LWheel1.ChangeDutyCycle(0)
         PWM_LWheel2.ChangeDutyCycle(0)
+
+    elif GPIO.input(SensorR) == 0 and GPIO.input(SensorL) == 0:
+        PWM_RWheel1.ChangeDutyCycle(30)
+        PWM_RWheel2.ChangeDutyCycle(30)
+        PWM_LWheel1.ChangeDutyCycle(30)
+        PWM_LWheel2.ChangeDutyCycle(30)
