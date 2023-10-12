@@ -73,61 +73,53 @@ def Wheel_Dir(i):
 
 
 
+def TurnLeft():
+    Wheel_Dir(True)
+    PWM_RWheel1.ChangeDutyCycle(45)
+    PWM_RWheel2.ChangeDutyCycle(45)
+    PWM_LWheel1.ChangeDutyCycle(0)
+    PWM_LWheel2.ChangeDutyCycle(0)
+
+def TurnRight():
+    Wheel_Dir(False)
+    PWM_RWheel1.ChangeDutyCycle(0)
+    PWM_RWheel2.ChangeDutyCycle(0)
+    PWM_LWheel1.ChangeDutyCycle(45)
+    PWM_LWheel2.ChangeDutyCycle(45)
+
+def GoForward():
+    Wheel_Dir(False)
+    PWM_RWheel1.ChangeDutyCycle(60)
+    PWM_RWheel2.ChangeDutyCycle(60)
+    PWM_LWheel1.ChangeDutyCycle(60)
+    PWM_LWheel2.ChangeDutyCycle(60)
+
+def GoBackward():
+    Wheel_Dir(True)
+    PWM_RWheel1.ChangeDutyCycle(45)
+    PWM_RWheel2.ChangeDutyCycle(45)
+    PWM_LWheel1.ChangeDutyCycle(45)
+    PWM_LWheel2.ChangeDutyCycle(45)
+
+def Stop():
+    PWM_RWheel1.ChangeDutyCycle(0)
+    PWM_RWheel2.ChangeDutyCycle(0)
+    PWM_LWheel1.ChangeDutyCycle(0)
+    PWM_LWheel2.ChangeDutyCycle(0)
+
+def press(key):
+    if key == "w":
+        GoForward()
+    if key == "s":
+        GoBackward()
+    if key == "a":
+        TurnLeft()
+    if key == "d":
+        TurnRight()
+
+def release(key):
+    if key == "w" or key == "s" or key == "a" or key == "d":
+        Stop()
 
 while True:
-    def TurnLeft():
-        Wheel_Dir(True)
-        PWM_RWheel1.ChangeDutyCycle(45)
-        PWM_RWheel2.ChangeDutyCycle(45)
-        PWM_LWheel1.ChangeDutyCycle(0)
-        PWM_LWheel2.ChangeDutyCycle(0)
-
-    def TurnRight():
-        Wheel_Dir(False)
-        PWM_RWheel1.ChangeDutyCycle(0)
-        PWM_RWheel2.ChangeDutyCycle(0)
-        PWM_LWheel1.ChangeDutyCycle(45)
-        PWM_LWheel2.ChangeDutyCycle(45)
-
-    def GoForward():
-        Wheel_Dir(False)
-        PWM_RWheel1.ChangeDutyCycle(60)
-        PWM_RWheel2.ChangeDutyCycle(60)
-        PWM_LWheel1.ChangeDutyCycle(60)
-        PWM_LWheel2.ChangeDutyCycle(60)
-
-    def GoBackward():
-        Wheel_Dir(True)
-        PWM_RWheel1.ChangeDutyCycle(45)
-        PWM_RWheel2.ChangeDutyCycle(45)
-        PWM_LWheel1.ChangeDutyCycle(45)
-        PWM_LWheel2.ChangeDutyCycle(45)
-
-    def Stop():
-        PWM_RWheel1.ChangeDutyCycle(0)
-        PWM_RWheel2.ChangeDutyCycle(0)
-        PWM_LWheel1.ChangeDutyCycle(0)
-        PWM_LWheel2.ChangeDutyCycle(0)
-
-    def press(key):
-        if key == "w":
-            GoForward()
-        if key == "s":
-            GoBackward()
-        if key == "a":
-            TurnLeft()
-        if key == "d":
-            TurnRight()
-    
-    def release(key):
-        if key == "w":
-            Stop()
-        if key == "s":
-            Stop()
-        if key == "a":
-            Stop()
-        if key == "d":
-            Stop()
-
-
-listen_keyboard(on_press = press, on_release = release)
+    listen_keyboard(on_press = press, )
