@@ -7,6 +7,7 @@ from time import sleep
 GPIO.setmode(GPIO.BCM)
 '''Dette specificerer RPi pins til at følge "Broadcom SOC channel"... Aka., det definere pins i en bestemt rækkefølge'''
 
+GPIO.cleanup()
 
 
 RWheel1 = 13
@@ -59,13 +60,13 @@ def LWheel2_Dir(i):
 
 
 
-RWheel1_Dir(True)
-RWheel2_Dir(True)
+RWheel1_Dir(False)
+RWheel2_Dir(False)
 
-LWheel1_Dir(True)
-LWheel2_Dir(True)
+LWheel1_Dir(False)
+LWheel2_Dir(False)
 
-
+'''
 while True:
     for duty in range(0,101,1):
         PWM_RWheel1.ChangeDutyCycle(duty) #provide duty cycle in the range 0-100
@@ -80,3 +81,19 @@ while True:
         PWM_LWheel1.ChangeDutyCycle(duty)
         PWM_LWheel2.ChangeDutyCycle(duty)
         sleep(0.1)
+
+This works but imma try the sensors now!        
+'''
+
+Sensor1 = 24
+Sensor2 = 25
+
+
+GPIO.setup(Sensor1, GPIO.IN)
+GPIO.setup(Sensor2, GPIO.IN)
+
+while True:
+    print(GPIO.input(Sensor1))
+    print(GPIO.input(Sensor2))
+    sleep(1)
+    
