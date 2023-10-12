@@ -74,7 +74,7 @@ def Wheel_Dir(i):
 
 
 def TurnLeft():
-    Wheel_Dir(True)
+    Wheel_Dir(False)
     PWM_RWheel1.ChangeDutyCycle(45)
     PWM_RWheel2.ChangeDutyCycle(45)
     PWM_LWheel1.ChangeDutyCycle(0)
@@ -122,4 +122,4 @@ def release(key):
         Stop()
 
 while True:
-    listen_keyboard(on_press = press, )
+    listen_keyboard(on_press = press, on_release = release)
