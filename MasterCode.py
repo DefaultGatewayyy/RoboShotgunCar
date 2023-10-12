@@ -2,8 +2,11 @@
 import RPi.GPIO as GPIO
 from time import sleep
 
+
+
 GPIO.setmode(GPIO.BCM)
 '''Dette specificerer RPi pins til at følge "Broadcom SOC channel"... Aka., det definere pins i en bestemt rækkefølge'''
+
 
 
 RWheel1 = 13
@@ -16,6 +19,8 @@ LWheelDir1 = 23
 LWheel2 = 12
 LWheelDir2 = 22
 '''Dette er midlertidige pins. Vi skal have sat dem til det de rigtigt skal være...'''
+
+
 
 GPIO.setup(RWheel1, GPIO.OUT)
 GPIO.setup(RWheelDir1, GPIO.OUT)
@@ -37,6 +42,7 @@ PWM_LWheel2 = GPIO.PWM(LWheel2, 1000)
 '''Her sætter vi alle "Wheels" op til at køre med pwm'''
 
 
+
 def RWheel1_Dir(i):
     GPIO.output(RWheelDir1, i)
 def RWheel2_Dir(i):
@@ -48,16 +54,21 @@ def LWheel2_Dir(i):
 '''Dette siger hvilken retning som hjulene skal dreje...'''
 
 
+
 RWheel1_Dir(True)
 RWheel2_Dir(True)
 
 LWheel1_Dir(True)
 LWheel2_Dir(True)
 
-while True:
-    for duty in range(0,101,1):
-        GPIO.output(PWM_RWheel1, duty)
-        GPIO.output(PWM_RWheel2, duty)
-        GPIO.output(PWM_LWheel1, duty)
-        GPIO.output(PWM_LWheel2, duty)
+
+
+i = 0
+
+while i < 100:
+        GPIO.output(PWM_RWheel1, i)
+        GPIO.output(PWM_RWheel2, i)
+        GPIO.output(PWM_LWheel1, i)
+        GPIO.output(PWM_LWheel2, i)
+        i += 1
         sleep(1)
