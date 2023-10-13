@@ -103,17 +103,17 @@ def GoBackward():
 
 def DriftRight():
     Wheel_Dir(False)
-    PWM_RWheel1.ChangeDutyCycle(70)
-    PWM_RWheel2.ChangeDutyCycle(70)
+    PWM_RWheel1.ChangeDutyCycle(50)
+    PWM_RWheel2.ChangeDutyCycle(50)
     PWM_LWheel1.ChangeDutyCycle(100)
     PWM_LWheel2.ChangeDutyCycle(100)
 
-def DriftLeft():
+def DriftLeft(e_cache):
     Wheel_Dir(False)
     PWM_RWheel1.ChangeDutyCycle(100)
     PWM_RWheel2.ChangeDutyCycle(100)
-    PWM_LWheel1.ChangeDutyCycle(70)
-    PWM_LWheel2.ChangeDutyCycle(70)
+    PWM_LWheel1.ChangeDutyCycle(50)
+    PWM_LWheel2.ChangeDutyCycle(50)
 
 def Stop():
     PWM_RWheel1.ChangeDutyCycle(0)
