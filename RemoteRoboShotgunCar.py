@@ -75,8 +75,8 @@ def Wheel_Dir(i):
 
 def TurnLeft():
     Wheel_Dir(False)
-    PWM_RWheel1.ChangeDutyCycle(60)
-    PWM_RWheel2.ChangeDutyCycle(60)
+    PWM_RWheel1.ChangeDutyCycle(100)
+    PWM_RWheel2.ChangeDutyCycle(100)
     PWM_LWheel1.ChangeDutyCycle(0)
     PWM_LWheel2.ChangeDutyCycle(0)
 
@@ -84,8 +84,8 @@ def TurnRight():
     Wheel_Dir(False)
     PWM_RWheel1.ChangeDutyCycle(0)
     PWM_RWheel2.ChangeDutyCycle(0)
-    PWM_LWheel1.ChangeDutyCycle(60)
-    PWM_LWheel2.ChangeDutyCycle(60)
+    PWM_LWheel1.ChangeDutyCycle(100)
+    PWM_LWheel2.ChangeDutyCycle(100)
 
 def GoForward():
     Wheel_Dir(False)
@@ -100,6 +100,20 @@ def GoBackward():
     PWM_RWheel2.ChangeDutyCycle(60)
     PWM_LWheel1.ChangeDutyCycle(60)
     PWM_LWheel2.ChangeDutyCycle(60)
+
+def DriftRight():
+    Wheel_Dir(False)
+    PWM_RWheel1.ChangeDutyCycle(70)
+    PWM_RWheel2.ChangeDutyCycle(70)
+    PWM_LWheel1.ChangeDutyCycle(100)
+    PWM_LWheel2.ChangeDutyCycle(100)
+
+def DriftLeft():
+    Wheel_Dir(False)
+    PWM_RWheel1.ChangeDutyCycle(100)
+    PWM_RWheel2.ChangeDutyCycle(100)
+    PWM_LWheel1.ChangeDutyCycle(70)
+    PWM_LWheel2.ChangeDutyCycle(70)
 
 def Stop():
     PWM_RWheel1.ChangeDutyCycle(0)
@@ -117,11 +131,13 @@ def press(key):
         TurnLeft()
     if key == "d":
         TurnRight()
-
-
-def release(key):
-    if key == "w" or key == "s" or key == "a" or key == "d":
+    if key == "space":
         Stop()
+    if key == "q":
+        DriftLeft()
+    if key == "e":
+        DriftRight()
+
 
 while True:
-    listen_keyboard(on_press = press, on_release = release)
+    listen_keyboard(on_press = press)
