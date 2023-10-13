@@ -108,7 +108,7 @@ def DriftRight():
     PWM_LWheel1.ChangeDutyCycle(100)
     PWM_LWheel2.ChangeDutyCycle(100)
 
-def DriftLeft(e_cache):
+def DriftLeft():
     Wheel_Dir(False)
     PWM_RWheel1.ChangeDutyCycle(100)
     PWM_RWheel2.ChangeDutyCycle(100)
